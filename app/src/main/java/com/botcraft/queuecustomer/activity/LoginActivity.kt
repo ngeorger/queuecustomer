@@ -1,10 +1,12 @@
-package com.botcraft.queuecustomer
+package com.botcraft.queuecustomer.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.botcraft.queuecustomer.R
+import com.botcraft.queuecustomer.modal.User
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 

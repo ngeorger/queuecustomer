@@ -1,10 +1,11 @@
-package com.botcraft.queuecustomer
+package com.botcraft.queuecustomer.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.botcraft.queuecustomer.R
 import kotlinx.android.synthetic.main.get_appointment_dialog.*
 
 class GetAppointmentDialog(var mListener: OnAppointmentGetListener) : DialogFragment() {

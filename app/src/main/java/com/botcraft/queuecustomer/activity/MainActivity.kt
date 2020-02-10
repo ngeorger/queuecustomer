@@ -1,9 +1,13 @@
-package com.botcraft.queuecustomer
+package com.botcraft.queuecustomer.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.botcraft.queuecustomer.R
+import com.botcraft.queuecustomer.fragment.AccountFragment
+import com.botcraft.queuecustomer.fragment.BookingFragment
+import com.botcraft.queuecustomer.fragment.LiveTrackFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 

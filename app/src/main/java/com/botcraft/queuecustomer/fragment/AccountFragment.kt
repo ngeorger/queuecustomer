@@ -1,13 +1,14 @@
-package com.botcraft.queuecustomer
+package com.botcraft.queuecustomer.fragment
 
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_booking.view.*
+import androidx.fragment.app.Fragment
+import com.botcraft.queuecustomer.R
+import kotlinx.android.synthetic.main.fragment_account.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,7 +18,13 @@ private const val ARG_PARAM2 = "param2"
 private var PRIVATE_MODE = 0
 private val PREF_NAME = "queue_app"
 
-class BookingFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [AccountFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ *
+ */
+class AccountFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,9 +42,17 @@ class BookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_booking, container, false)
-        val sharedPref: SharedPreferences = activity!!.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-        view.welcome_note.setText(getString(R.string.welcome_note, sharedPref.getString("name", null)))
+        //Vignesh
+        val view = inflater.inflate(R.layout.fragment_account, container, false)
+        val sharedPref: SharedPreferences = activity!!.getSharedPreferences(
+            PREF_NAME,
+            PRIVATE_MODE
+        )
+        view.mobile_no.setText(sharedPref.getString("mobile", null))
+        view.log_out.setOnClickListener {
+            sharedPref.edit().clear().apply()
+            activity?.onBackPressed()
+        }
         return view
     }
 
@@ -49,12 +64,12 @@ class BookingFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment BookingFragment.
+         * @return A new instance of fragment AccountFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            BookingFragment().apply {
+            AccountFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
