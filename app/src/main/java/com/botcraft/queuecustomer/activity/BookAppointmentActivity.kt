@@ -1,7 +1,6 @@
 package com.botcraft.queuecustomer.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -107,7 +106,7 @@ class BookAppointmentActivity : AppCompatActivity() {
         val token = Token(slotId, slotTime, strname!!,strmobile!!, strage.toInt(),strgender!!,"Upcoming",strdiseasedetails)
 
         FirebaseDatabase.getInstance().reference.child("appointments").child(slotId.toString())
-            .push().setValue(token).addOnCompleteListener(
+            .child(strmobile).setValue(token).addOnCompleteListener(
                 OnCompleteListener {
                     Utils.showToast(this, "Appointment Booked")
                     finish()
