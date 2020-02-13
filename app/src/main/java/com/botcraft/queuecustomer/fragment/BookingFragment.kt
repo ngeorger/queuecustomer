@@ -1,6 +1,7 @@
 package com.botcraft.queuecustomer.fragment
 
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.botcraft.queuecustomer.R
+import com.botcraft.queuecustomer.activity.ScheduleAppointmentActivity
 import kotlinx.android.synthetic.main.fragment_booking.view.*
 
 
@@ -42,6 +44,11 @@ class BookingFragment : Fragment() {
             PRIVATE_MODE
         )
         view.welcome_note.setText(getString(R.string.welcome_note, sharedPref.getString("name", null)))
+
+        view.scheduleAppointment.setOnClickListener(View.OnClickListener {
+            context!!.startActivity(Intent(context, ScheduleAppointmentActivity::class.java))
+        })
+
         return view
     }
 

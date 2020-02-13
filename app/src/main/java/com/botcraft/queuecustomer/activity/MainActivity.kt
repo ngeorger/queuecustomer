@@ -1,7 +1,5 @@
 package com.botcraft.queuecustomer.activity
 
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.botcraft.queuecustomer.R
@@ -12,9 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "queue_app"
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {
@@ -45,14 +40,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val sharedPref: SharedPreferences = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-
-        if (sharedPref.getString("name", null) == null) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-
         setContentView(R.layout.activity_main)
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigationView.selectedItemId = navigationView.menu.getItem(0).itemId
