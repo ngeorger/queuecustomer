@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <TextView
+
             android:id="@+id/slot_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/holo_green_dark"
+            android:background="@drawable/bt_green_background"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:padding="7dp"
+            android:padding="8dp"
             android:text="6.00 - 6.15"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
 </LinearLayout>

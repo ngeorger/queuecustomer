@@ -43,7 +43,6 @@ class BookingFragment : Fragment() {
             PREF_NAME,
             PRIVATE_MODE
         )
-        view.welcome_note.setText(getString(R.string.welcome_note, sharedPref.getString("name", null)))
 
         view.scheduleAppointment.setOnClickListener(View.OnClickListener {
             context!!.startActivity(Intent(context, ScheduleAppointmentActivity::class.java))

@@ -88,10 +88,10 @@ class BookAppointmentActivity : AppCompatActivity() {
     private fun bookAppointment(forSelf: Boolean) {
 
         var strname = ""
-        var strmobile = Utils.getPrefValue(this,"mobile")!!
+        val strmobile = Utils.getPrefValue(this,"mobile")!!
         var strage = ""
         var strgender = ""
-        var strdiseasedetails = disease_details.text.toString()
+        val strdiseasedetails = disease_details.text.toString()
 
         if(forSelf){
             strname = Utils.getPrefValue(this,"name")!!

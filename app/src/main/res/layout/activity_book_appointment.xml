@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/light_gray"
+              android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -12,51 +13,73 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
                 android:orientation="vertical">
 
+            <RelativeLayout android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content">
+
+
+                <ImageView
+                        android:id="@+id/img_doctor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_doctor"/>
+
+                <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_toRightOf="@id/img_doctor"
+                        android:layout_toEndOf="@id/img_doctor"
+                        android:id="@+id/txt_doctor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Dr. Name"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="22sp"/>
+
+                <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_toRightOf="@id/img_doctor"
+                        android:layout_toEndOf="@id/img_doctor"
+                        android:layout_below="@id/txt_doctor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="General Physician"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"/>
+
+            </RelativeLayout>
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Book a LIVE Appointment with Doctor"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-            <ImageView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/ic_doctor" />
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Book 23 Oct 20 6.15-6.30"
+                    android:layout_gravity="center"
+                    android:textSize="22sp"/>
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="sans-serif"
-                    android:text="Dr. Name"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="sans-serif"
-                    android:text="General Physician"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
 
             <RadioGroup
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
                     android:id="@+id/radiogroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingTop="25dp">
+                    android:orientation="horizontal">
 
                 <RadioButton
                         android:id="@+id/radiobutton1"
@@ -64,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="For Self"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                 <RadioButton
                         android:id="@+id/radiobutton2"
@@ -73,7 +96,7 @@
                         android:layout_marginLeft="25dp"
                         android:text="For Others"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
             </RadioGroup>
 
@@ -82,13 +105,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:visibility="gone">
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp" android:visibility="gone">
 
                 <EditText
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Enter Patient name" />
+                        android:hint="Patient name"/>
 
                 <EditText
                         android:id="@+id/age"
@@ -97,7 +123,7 @@
                         android:maxLength="2"
                         android:layout_below="@+id/name"
                         android:hint="Age"
-                        android:inputType="number" />
+                        android:inputType="number"/>
 
                 <EditText
                         android:id="@+id/gender"
@@ -106,25 +132,35 @@
                         android:maxLength="6"
                         android:layout_below="@+id/name"
                         android:layout_toRightOf="@+id/age"
-                        android:hint="Gender" />
+                        android:hint="Gender"/>
 
             </RelativeLayout>
 
             <EditText
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:id="@+id/disease_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Disease Details"/>
+                    android:hint="Specify illness"/>
 
             <Button
                     android:id="@+id/btn_confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="25dp"
-                    android:background="@drawable/button_background"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="18sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/bt_pink_background"
                     android:text="Confirm"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"/>
 
         </LinearLayout>
 

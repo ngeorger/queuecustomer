@@ -34,9 +34,9 @@ class SlotsListAdapter() : RecyclerView.Adapter<SlotsListAdapter.ViewHolder>() {
         }
 
         if(slotsList!!.get(position).available){
-            holder.mslotTime.setBackgroundColor(context.resources.getColor(android.R.color.holo_green_dark));
+            holder.mslotTime.setBackgroundResource(R.drawable.bt_green_background)
         } else {
-            holder.mslotTime.setBackgroundColor(context.resources.getColor(android.R.color.darker_gray));
+            holder.mslotTime.setBackgroundResource(R.drawable.bt_gray_background)
         }
 
         holder.itemView.setOnClickListener {

@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_live_track.*
 
-class LiveTrackFragment : Fragment(),TokenListAdapter.OnClickListener {
+class LiveTrackFragment : Fragment(), TokenListAdapter.OnClickListener {
 
     var tokensList = ArrayList<Token>()
 
@@ -24,7 +24,7 @@ class LiveTrackFragment : Fragment(),TokenListAdapter.OnClickListener {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_live_track, container, false)
     }
@@ -53,9 +53,11 @@ class LiveTrackFragment : Fragment(),TokenListAdapter.OnClickListener {
                     }
                 }
 
-                progressbar.setVisibility(View.GONE)
+                if (progressbar != null)
+                    progressbar.setVisibility(View.GONE)
                 adapter.updateTokensList(tokensList)
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 println("loadPost:onCancelled ${databaseError.toException()}")
             }
