@@ -10,6 +10,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.botcraft.queuecustomer.R
 import com.botcraft.queuecustomer.activity.ScheduleAppointmentActivity
+import com.botcraft.queuecustomer.modal.Token
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_booking.*
 import kotlinx.android.synthetic.main.fragment_booking.view.*
 
 
@@ -21,16 +27,12 @@ private var PRIVATE_MODE = 0
 private val PREF_NAME = "queue_app"
 
 class BookingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    var tokensList = ArrayList<Token>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -44,31 +46,58 @@ class BookingFragment : Fragment() {
             PRIVATE_MODE
         )
 
+        view.progressBarView.visibility = View.VISIBLE
+
         view.scheduleAppointment.setOnClickListener(View.OnClickListener {
             context!!.startActivity(Intent(context, ScheduleAppointmentActivity::class.java))
         })
 
+
+        val itemListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                tokensList.clear()
+                dataSnapshot.children.forEach {
+                    it.children.mapNotNullTo(tokensList) {
+                        it.getValue<Token>(Token::class.java)
+                    }
+                }
+
+                if (view.progressBarView != null)
+                    view.progressBarView.setVisibility(View.GONE)
+
+                updateTokenDetails(getBookedToken(tokensList))
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("loadPost:onCancelled ${databaseError.toException()}")
+            }
+        }
+        FirebaseDatabase.getInstance().reference.child("appointments").addValueEventListener(itemListener)
+
         return view
     }
 
+    fun getBookedToken(tokenList: List<Token>): Token? {
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BookingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BookingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        val sharedPref: SharedPreferences = activity!!.getSharedPreferences(
+            PREF_NAME,
+            PRIVATE_MODE
+        )
+
+        tokenList.forEach {
+            if (it.patientMobile.equals(sharedPref.getString("mobile", null))) {
+                return it
             }
+        }
+        return null
     }
+
+    fun updateTokenDetails(token: Token?) {
+        if (token != null) {
+            booking_detail_view.visibility = View.VISIBLE
+            token_number.text = getString(R.string.token_no, token.slotId.toString())
+            booking_date.text = getString(R.string.date_slot, token.bookedForDate, token.slotTime)
+        }
+    }
+
 }

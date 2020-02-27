@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Patient App</string>
     <string name="welcome_note">Hello %1$s!</string>
-    <string name="token_no">Appointment number: %1$s</string>
+    <string name="token_no">Token number: %1$s</string>
     <string name="recent_no">Recently closed: %1$s</string>
+    <string name="date_slot">%1$s, %2$s</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

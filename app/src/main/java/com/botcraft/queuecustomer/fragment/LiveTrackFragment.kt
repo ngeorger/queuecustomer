@@ -47,6 +47,7 @@ class LiveTrackFragment : Fragment(), TokenListAdapter.OnClickListener {
 
         val itemListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                tokensList.clear()
                 dataSnapshot.children.forEach {
                     it.children.mapNotNullTo(tokensList) {
                         it.getValue<Token>(Token::class.java)

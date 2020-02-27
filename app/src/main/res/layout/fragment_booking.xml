@@ -1,101 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:background="@color/light_gray"
-              android:layout_height="match_parent"
-              tools:context=".fragment.BookingFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/light_gray"
+            android:layout_height="match_parent"
+            tools:context=".fragment.BookingFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
 
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="15dp">
 
-            <ImageView
-                    android:layout_width="wrap_content"
+
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/ic_doctor"/>
+                    android:orientation="vertical">
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="center"
-                    android:text="Dr. Name, MBBS"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="25dp"
+                        android:src="@drawable/ic_doctor"/>
 
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="General Physician"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"/>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:textColor="@android:color/black"
-                    android:text="Nerkundram, Chennai"
-                    android:textSize="16sp"/>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="Morning: 11:00 a.m to 1:00 pm "
-                    android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="Dr. Name, MBBS"
+                        android:textColor="@android:color/black"
+                        android:textSize="22sp"/>
 
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="Evening: 5:00 p.m to 11:00 pm "
-                    android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="General Physician"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"/>
 
-            <Button
-                    android:id="@+id/scheduleAppointment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="25dp"
-                    android:background="@drawable/bt_pink_background"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="8dp"
-                    android:text="Schedule"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"
-            />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:textColor="@android:color/black"
+                        android:text="Nerkundram, Chennai"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="Morning: 11:00 a.m to 1:00 pm "
+                        android:textSize="16sp"/>
 
 
-        </LinearLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="Evening: 5:00 p.m to 11:00 pm "
+                        android:textSize="16sp"/>
 
-    </androidx.cardview.widget.CardView>
+                <Button
+                        android:id="@+id/scheduleAppointment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="25dp"
+                        android:background="@drawable/bt_pink_background"
+                        android:fontFamily="sans-serif-medium"
+                        android:padding="8dp"
+                        android:text="Schedule"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                />
 
 
-</LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+                android:id="@+id/progressBarView"
+                android:visibility="gone"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <androidx.cardview.widget.CardView
+                android:visibility="gone"
+                android:id="@+id/booking_detail_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/token_number"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="Token No 23"
+                        android:textColor="@android:color/black"
+                        android:textSize="22sp"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:id="@+id/booking_date"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="6:15-6:30, 23 Oct 2020"
+                        android:textColor="@android:color/black"
+                        android:layout_marginBottom="20dp"
+                        android:textSize="18sp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

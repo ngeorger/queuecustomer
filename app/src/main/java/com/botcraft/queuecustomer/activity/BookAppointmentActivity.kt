@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_book_appointment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BookAppointmentActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class BookAppointmentActivity : AppCompatActivity() {
 
         slotId = getIntent().getIntExtra("slot_id", -1)
         slotTime = getIntent().getStringExtra("time")
+        date_time.text = getString(R.string.date_slot, getDate(), slotTime)
 
         radiogroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
@@ -103,7 +106,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             strgender = gender.text.toString()
         }
 
-        val token = Token(slotId, slotTime, strname!!,strmobile!!, strage.toInt(),strgender!!,"Upcoming",strdiseasedetails)
+        val token = Token(slotId, slotTime, strname!!,strmobile!!, strage.toInt(),strgender!!,"Upcoming",strdiseasedetails, getDateTime(), getDate())
 
         FirebaseDatabase.getInstance().reference.child("appointments").child(slotId.toString())
             .child(strmobile).setValue(token).addOnCompleteListener(
@@ -129,5 +132,17 @@ class BookAppointmentActivity : AppCompatActivity() {
 
         FirebaseDatabase.getInstance().reference.child("appointments")
             .child(slotId.toString()).addValueEventListener(itemListener)
+    }
+
+    fun getDate(): String{
+        val date = Calendar.getInstance().time
+        val format = SimpleDateFormat("dd MMM yyy", Locale.US)
+        return format.format(date)
+    }
+
+    fun getDateTime(): String{
+        val date = Calendar.getInstance().time
+        val format = SimpleDateFormat("dd/MM/yyy hh:mm:ss", Locale.US)
+        return format.format(date)
     }
 }
