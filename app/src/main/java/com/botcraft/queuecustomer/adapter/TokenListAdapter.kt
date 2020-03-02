@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.botcraft.queuecustomer.R
 import com.botcraft.queuecustomer.modal.Token
@@ -29,8 +31,15 @@ class TokenListAdapter() : RecyclerView.Adapter<TokenListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (tokensList != null) {
-            holder.mTokenId.text =  "Token "+"-"+(position+1).toString()
+            holder.mTokenId.text = context.getString(R.string.token_number, (position + 1).toString())
             holder.mTokenStatus.text = tokensList!!.get(position).status
+            if (tokensList!!.get(position).status.equals("Completed")) {
+                holder.mCheckBox.setImageResource(R.drawable.checkbox_green)
+                holder.mTokenStatus.setTextColor(ContextCompat.getColor(context, R.color.color_green))
+            } else {
+                holder.mCheckBox.setImageResource(R.drawable.checkbox_black)
+                holder.mTokenStatus.setTextColor(ContextCompat.getColor(context, R.color.color_dark_gray))
+            }
         }
     }
 
@@ -47,10 +56,14 @@ class TokenListAdapter() : RecyclerView.Adapter<TokenListAdapter.ViewHolder>() {
 
         internal val mTokenId: TextView
         internal val mTokenStatus: TextView
+        internal val mCheckBox: ImageView
+
 
         init {
             mTokenId = itemView.findViewById(R.id.token_id)
             mTokenStatus = itemView.findViewById(R.id.token_status)
+            mCheckBox = itemView.findViewById(R.id.checkbox)
+
         }
     }
 

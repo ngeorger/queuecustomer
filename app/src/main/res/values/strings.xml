@@ -4,6 +4,7 @@
     <string name="token_no">Token number: %1$s</string>
     <string name="recent_no">Recently closed: %1$s</string>
     <string name="date_slot">%1$s, %2$s</string>
+    <string name="token_number">Token No: %1$s</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

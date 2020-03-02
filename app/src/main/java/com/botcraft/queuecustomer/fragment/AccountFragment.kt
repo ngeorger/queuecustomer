@@ -48,11 +48,9 @@ class AccountFragment : Fragment() {
             PREF_NAME,
             PRIVATE_MODE
         )
+        view.acc_name.setText(sharedPref.getString("name", null))
         view.mobile_no.setText(sharedPref.getString("mobile", null))
-        view.log_out.setOnClickListener {
-            sharedPref.edit().clear().apply()
-            activity?.onBackPressed()
-        }
+
         return view
     }
 

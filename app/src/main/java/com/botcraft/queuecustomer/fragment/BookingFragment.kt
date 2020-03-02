@@ -1,9 +1,11 @@
 package com.botcraft.queuecustomer.fragment
 
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,25 +13,24 @@ import androidx.fragment.app.Fragment
 import com.botcraft.queuecustomer.R
 import com.botcraft.queuecustomer.activity.ScheduleAppointmentActivity
 import com.botcraft.queuecustomer.modal.Token
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_booking.*
 import kotlinx.android.synthetic.main.fragment_booking.view.*
+import kotlinx.android.synthetic.main.fragment_live_track.*
 
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 private var PRIVATE_MODE = 0
 private val PREF_NAME = "queue_app"
 
 class BookingFragment : Fragment() {
 
     var tokensList = ArrayList<Token>()
-
+    lateinit var mobileNo: String
+    var itemListener: ValueEventListener? = null
+    lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +42,6 @@ class BookingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_booking, container, false)
-        val sharedPref: SharedPreferences = activity!!.getSharedPreferences(
-            PREF_NAME,
-            PRIVATE_MODE
-        )
 
         view.progressBarView.visibility = View.VISIBLE
 
@@ -52,6 +49,14 @@ class BookingFragment : Fragment() {
             context!!.startActivity(Intent(context, ScheduleAppointmentActivity::class.java))
         })
 
+        databaseReference = FirebaseDatabase.getInstance().reference.child("appointments")
+
+        return view
+    }
+
+
+    override fun onStart() {
+        super.onStart()
 
         val itemListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -62,30 +67,37 @@ class BookingFragment : Fragment() {
                     }
                 }
 
-                if (view.progressBarView != null)
-                    view.progressBarView.setVisibility(View.GONE)
+                if (progressBarView != null)
+                    progressBarView.setVisibility(View.GONE)
 
-                updateTokenDetails(getBookedToken(tokensList))
+                Log.d("balaji", "on call back")
+
+                updateTokenDetails(getTokenDetails(tokensList))
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("loadPost:onCancelled ${databaseError.toException()}")
             }
         }
-        FirebaseDatabase.getInstance().reference.child("appointments").addValueEventListener(itemListener)
+        databaseReference.addValueEventListener(itemListener)
+        this.itemListener = itemListener
 
-        return view
     }
 
-    fun getBookedToken(tokenList: List<Token>): Token? {
-
-        val sharedPref: SharedPreferences = activity!!.getSharedPreferences(
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val sharedPref: SharedPreferences = context.getSharedPreferences(
             PREF_NAME,
             PRIVATE_MODE
         )
+        mobileNo = sharedPref.getString("mobile", "").toString()
+
+    }
+
+    fun getTokenDetails(tokenList: List<Token>): Token? {
 
         tokenList.forEach {
-            if (it.patientMobile.equals(sharedPref.getString("mobile", null))) {
+            if (it.patientMobile.equals(mobileNo)) {
                 return it
             }
         }
@@ -100,4 +112,10 @@ class BookingFragment : Fragment() {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        itemListener?.let {
+            databaseReference.removeEventListener(it)
+        }
+    }
 }

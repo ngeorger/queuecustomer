@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.botcraft.queuecustomer.R
 import com.botcraft.queuecustomer.adapter.TokenListAdapter
 import com.botcraft.queuecustomer.modal.Token
@@ -38,9 +39,8 @@ class LiveTrackFragment : Fragment(), TokenListAdapter.OnClickListener {
     private fun setRecyclerView() {
         // Layout Manager for recycler view
         progressbar.setVisibility(View.VISIBLE)
-        val grid = GridLayoutManager(context, 2)
         tokensRecyclerView.setHasFixedSize(true)
-        tokensRecyclerView.layoutManager = grid
+        tokensRecyclerView.layoutManager = LinearLayoutManager(context)
 
         val adapter = TokenListAdapter(context!!, this)
         tokensRecyclerView.adapter = adapter
