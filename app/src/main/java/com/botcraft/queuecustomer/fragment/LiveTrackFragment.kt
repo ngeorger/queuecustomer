@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.botcraft.queuecustomer.R
@@ -44,6 +45,7 @@ class LiveTrackFragment : Fragment(), TokenListAdapter.OnClickListener {
 
         val adapter = TokenListAdapter(context!!, this)
         tokensRecyclerView.adapter = adapter
+        tokensRecyclerView.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
 
         val itemListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                    android:layout_width="match_parent"
-                                   android:layout_margin="5dp"
                                    android:layout_height="wrap_content">
 
 
@@ -9,7 +8,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="15dp">
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_centerVertical="true"
@@ -30,19 +29,19 @@
                 android:gravity="center"
                 android:text="Token"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
         <TextView
                 android:id="@+id/token_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="sans-serif-medium"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:text="upcoming"
                 android:textColor="@color/color_dark_gray"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="italic"/>
 
     </RelativeLayout>

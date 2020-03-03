@@ -33,7 +33,9 @@ class TokenListAdapter() : RecyclerView.Adapter<TokenListAdapter.ViewHolder>() {
         if (tokensList != null) {
             holder.mTokenId.text = context.getString(R.string.token_number, (position + 1).toString())
             holder.mTokenStatus.text = tokensList!!.get(position).status
-            if (tokensList!!.get(position).status.equals("Completed")) {
+            if (tokensList!!.get(position).status.equals("Completed") ||
+                tokensList!!.get(position).status.equals("In progress")
+            ) {
                 holder.mCheckBox.setImageResource(R.drawable.checkbox_green)
                 holder.mTokenStatus.setTextColor(ContextCompat.getColor(context, R.color.color_green))
             } else {

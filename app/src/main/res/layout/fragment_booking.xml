@@ -18,7 +18,7 @@
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp">
+                android:layout_margin="10dp">
 
 
             <LinearLayout
@@ -30,7 +30,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:src="@drawable/ic_doctor"/>
 
                 <TextView
@@ -39,8 +39,8 @@
                         android:layout_marginTop="15dp"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text="Dr. Name, MBBS"
-                        android:textColor="@android:color/black"
+                        android:text="Dr. V. Sriram, MBBS"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="22sp"/>
 
 
@@ -70,6 +70,7 @@
                         android:layout_marginTop="3dp"
                         android:fontFamily="sans-serif"
                         android:gravity="center"
+                        android:textColor="@android:color/black"
                         android:text="Morning: 11:00 a.m to 1:00 pm "
                         android:textSize="16sp"/>
 
@@ -80,7 +81,8 @@
                         android:layout_marginTop="3dp"
                         android:fontFamily="sans-serif"
                         android:gravity="center"
-                        android:text="Evening: 5:00 p.m to 11:00 pm "
+                        android:textColor="@android:color/black"
+                        android:text="Evening: 6:00 p.m to 11:00 pm "
                         android:textSize="16sp"/>
 
                 <Button
@@ -89,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/bt_pink_background"
                         android:fontFamily="sans-serif-medium"
                         android:padding="8dp"
@@ -106,7 +108,7 @@
         <ProgressBar
                 android:id="@+id/progressBarView"
                 android:visibility="gone"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -116,11 +118,11 @@
                 android:id="@+id/booking_detail_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp">
 
             <LinearLayout android:layout_width="match_parent"
                           android:orientation="vertical"
@@ -134,12 +136,12 @@
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Token No 23"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="22sp"/>
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="5dp"
                         android:id="@+id/booking_date"
                         android:fontFamily="sans-serif"
                         android:gravity="center"
